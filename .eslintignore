@@ -1,0 +1,4 @@
+dist/*
+**/node_modules/**
+src/lib/utils/CKEditor/
+src/lib/datadog/
