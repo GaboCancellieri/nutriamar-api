@@ -17,6 +17,7 @@ router.post('/login', async (req: Request, res: Response): Promise<Response> => 
         firstName: user.firstName,
         lastName: user.lastName,
         isActive: user.isActive,
+        isAdmin: user.isAdmin,
         role: user.role,
       };
       const accessToken = await jwt.sign(userPlainObject, ACCESS_TOKEN_SECRET, { expiresIn: '1d' });

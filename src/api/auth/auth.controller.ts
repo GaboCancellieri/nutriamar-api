@@ -22,6 +22,7 @@ export const checkUserPassword = async (email: string, contrasenia: string): Pro
           firstName: user.firstName,
           lastName: user.lastName,
           isActive: user.isActive,
+          isAdmin: user.isAdmin,
           role: user.role,
         });
       }
@@ -52,6 +53,7 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
     if (authHeader) {
       const accessToken = authHeader.split(' ')[1];
       if (accessToken && ACCESS_TOKEN_SECRET) {
+        console.log({ accessToken });
         const user = await jwt.verify(accessToken, ACCESS_TOKEN_SECRET);
         req.body.user = user;
         next();
@@ -59,7 +61,7 @@ export const verifyAccessToken = async (req: Request, res: Response, next: NextF
         res.status(403).json({ title: 'ERROR!', message: 'AccessToken is null.' });
       }
     } else {
-      res.status(403).json({ title: 'ERROR!', message: 'autHeader is null.' });
+      res.status(403).json({ title: 'ERROR!', message: 'authHeader is null.' });
     }
     return res;
   } catch (error) {

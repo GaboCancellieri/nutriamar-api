@@ -12,10 +12,11 @@ import { enableCors } from './config/constants';
 dotenv.config();
 
 // SWAGGER IMPORTS
-import { HomeBannerRoutes } from './api/routes/Web';
-import { AuthRoutes } from './api/auth';
 
 // IMPORT ROUTES
+import { AuthRoutes } from './api/auth';
+import { HomeBannerRoutes } from './api/routes/Web';
+import { NutritionalPlanRoutes } from './api/routes/Web';
 
 //CRON
 
@@ -55,8 +56,9 @@ class Server {
 
   routes() {
     /* las rutas de la app */
-    this.app.use('/api', HomeBannerRoutes);
     this.app.use('/api', AuthRoutes);
+    this.app.use('/api', HomeBannerRoutes);
+    this.app.use('/api', NutritionalPlanRoutes);
   }
 
   start() {
