@@ -57,10 +57,10 @@ class Server {
 
   routes() {
     /* las rutas de la app */
-    this.app.use('/api', AuthRoutes);
-    this.app.use('/api', HomeBannerRoutes);
-    this.app.use('/api', NutritionalPlanRoutes);
-    this.app.use('/api', TestimoniesRoutes);
+    this.app.use(AuthRoutes);
+    this.app.use(HomeBannerRoutes);
+    this.app.use(NutritionalPlanRoutes);
+    this.app.use(TestimoniesRoutes);
   }
 
   start() {
